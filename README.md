@@ -61,7 +61,3 @@ python main.py
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
 
-## Appendix
-[Ссылка на урок](https://dvmn.org/modules/django-orm/lesson/watching-storage)
-
-[Сслыка на исходник](https://github.com/dvmn-tasks/django-orm-watching-storage)
