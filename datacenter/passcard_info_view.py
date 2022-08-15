@@ -15,7 +15,6 @@ def passcard_info_view(request, passcode):
     this_passcard_visits = []
     passcard = get_object_or_404(Passcard, passcode=passcode)
     all_visits = get_list_or_404(Visit, passcard=passcard)
-    is_strange = False
     for visit in all_visits:
         this_passcard_visits.append(
             {
