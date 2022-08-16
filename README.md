@@ -44,7 +44,7 @@ Python3 должен быть уже установлен.
 
 Затем установите зависимости:
 ```
-pip install -r requirements.txt
+pip install poetry
 ```
 
 
