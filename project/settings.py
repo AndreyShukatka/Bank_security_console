@@ -1,13 +1,15 @@
 import os
-from dotenv import load_dotenv
+from environs import Env
 
-load_dotenv()
-bd_engine = os.environ['ENGINE']
-bd_host = os.environ['HOST']
-bd_port = os.environ['PORT']
-bd_name = os.environ['NAME']
-bd_user = os.environ['USER']
-bd_password = os.environ['PASSWORD']
+env = Env()
+env.read_env()
+bd_engine = env('ENGINE')
+bd_host = env('HOST')
+bd_port = env('PORT')
+bd_name = env('NAME')
+bd_user = env('USER')
+bd_password = env('PASSWORD')
+
 
 DATABASES = {
     'default': {
