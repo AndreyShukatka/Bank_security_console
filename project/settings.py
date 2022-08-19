@@ -11,9 +11,10 @@ sensitive_bd_data = {
     'bd_name': env('DB_NAME'),
     'bd_user': env('DB_USER'),
     'bd_password': env('DB_PASSWORD'),
-    'secret_key': 'SECRET_KEY'
 }
-
+other_sensitive_data = {
+    'secret_key': env('SECRET_KEY'),
+}
 DATABASES = {
     'default': {
         'ENGINE': sensitive_bd_data['bd_engine'],
@@ -27,13 +28,13 @@ DATABASES = {
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = sensitive_bd_data['secret_key']
+SECRET_KEY = other_sensitive_data['secret_key']
 
 DEBUG = env.bool("DEBUG", default=False)
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['127.0.0.1'])
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
