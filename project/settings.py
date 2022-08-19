@@ -1,30 +1,33 @@
 import os
 from environs import Env
+from django.core.management.utils import get_random_secret_key
 
 env = Env()
 env.read_env()
-bd_engine = env('ENGINE')
-bd_host = env('HOST')
-bd_port = env('PORT')
-bd_name = env('NAME')
-bd_user = env('USER')
-bd_password = env('PASSWORD')
-
+sensitive_bd_data = {
+    'bd_engine': env('DB_ENGINE'),
+    'bd_host': env('DB_HOST'),
+    'bd_port': env('DB_PORT'),
+    'bd_name': env('DB_NAME'),
+    'bd_user': env('DB_USER'),
+    'bd_password': env('DB_PASSWORD'),
+    'secret_key': 'SECRET_KEY'
+}
 
 DATABASES = {
     'default': {
-        'ENGINE': bd_engine,
-        'HOST': bd_host,
-        'PORT': bd_port,
-        'NAME': bd_name,
-        'USER': bd_user,
-        'PASSWORD': bd_password,
+        'ENGINE': sensitive_bd_data['bd_engine'],
+        'HOST': sensitive_bd_data['bd_host'],
+        'PORT': sensitive_bd_data['bd_port'],
+        'NAME': sensitive_bd_data['bd_name'],
+        'USER': sensitive_bd_data['bd_user'],
+        'PASSWORD': sensitive_bd_data['bd_password'],
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = sensitive_bd_data['secret_key']
 
 DEBUG = env.bool("DEBUG", default=False)
 
